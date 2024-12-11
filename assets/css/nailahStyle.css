@@ -9,3 +9,28 @@ body {
 ul {
     list-style-type: none;
 }
+
+h1 {
+    color: #FFFFFF;
+}
+
+.leftInfo h2 {
+    color:#FFFFFF;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #105BD8;
+}
+
+.leftInfo h5 {
+    color:#FFFFFF;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #02BFE7;
+}
+
+.leftInfo p {
+    color:#FFFFFF;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #061F4A;
+}
