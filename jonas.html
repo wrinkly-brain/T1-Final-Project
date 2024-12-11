@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
 
     <title>Mars Rover Camera Station</title>
 </head>
+
 <body>
     <nav>
         <ul>
@@ -23,9 +25,19 @@
         <h1>Mars Rover Camera Station</h1>
     </header>
     <main>
+        <section>
+            <label for="SolNum">Enter a number for the solar day:</label>
+            <input type="text" id="SolNum">
+            <!-- When the user hovers over this input area, an explanation of a solar day will appear -->
+        </section>
         <section id="RoverCam">
-            <img src="" alt=""> 
+            <img src="" alt=""> <br>
             <!-- Img attributes will be specified later -->
+
+            <button id="BackButton">Previous</button>
+            <button id="NextButton">Next</button> <br>
+            <label for="CarouselStep">Step Size:</label>
+            <input type="text" id="CarouselStep" placeholder="Enter step size">
         </section>
 
         <section id="RoverChoices">
@@ -52,4 +64,5 @@
         </section>
     </main>
 </body>
+
 </html>
