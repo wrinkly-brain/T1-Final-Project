@@ -5,7 +5,9 @@ const latestButtonInfo = {
 }
 
 const uriLinkSegments = {
-    
+    solNum: 0,
+    rover: "",
+    cameraAngle: "",
 }
 
 const RoverButtons = document.querySelectorAll(".RoverButtons");
@@ -20,7 +22,9 @@ RoverButtons.forEach(button => {
         latestButtonInfo.buttonID = response.target.id;
         latestButtonInfo.buttonClass = response.target.className;
 
-        console.log(latestButtonInfo)
+        uriLinkSegments.rover = response.target.id.toLowerCase();
+
+        console.log(uriLinkSegments);
     }
 )});
 
@@ -33,7 +37,10 @@ CameraButtons.forEach(button => {
         latestButtonInfo.buttonID = response.target.id;
         latestButtonInfo.buttonClass = response.target.className;
 
-        console.log(latestButtonInfo);
+        uriLinkSegments.cameraAngle = response.target.id;
+
+        console.log(uriLinkSegments);
     }
 )});
+
 
