@@ -2,8 +2,20 @@ body {
     background-color: #323A45;
 }
 
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
 .navBar {
+    display: flex;
+    padding: 25px;
     background-color: #212121;
+
+}
+.nav-Button {
+    display: flex;
+    flex-flow: row wrap;
 }
 
 ul {
@@ -11,7 +23,16 @@ ul {
 }
 
 h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
     color: #FFFFFF;
+}
+
+.info h2, h5, p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
 }
 
 .leftInfo h2 {
