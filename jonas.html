@@ -15,18 +15,24 @@
 
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="nailah.html">APOD</a></li>
-                <li><a href="austin.html">Exoplanets</a></li>
-                <li><a href="jonas.html">Mars <br> Rovers</a></li>
-            </ul>
-        </nav>
 
         <h1>Curiosity Rover Camera Station</h1>
     </header>
     <main>
+        <div class="navigation">
+            <a href="index.html">
+                <button class="nav-button">Home</button>
+              </a>
+            <a href="nailah.html">
+                <button class="nav-button">APOD</button>
+            </a>
+            <a href="austin.html">
+                <button class="nav-button">Exoplanets</button>
+            </a>
+            <a href="jonas.html">
+                <button class="nav-active-button">Mars Rover</button>
+            </a>
+        </div>
         <section id="RoverCam">
             <img id="RoverImage" src="" alt="An image from the Curiosity rover."> <br>
             <p id="ImageErrorText"></p> <br>
