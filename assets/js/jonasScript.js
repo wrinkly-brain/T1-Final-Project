@@ -1,7 +1,8 @@
 // Store button info to use in functions
-const latestButtonInfo = {
+const tempInfo = {
     buttonID: "",
     buttonClass: "",
+    maxSol: 0
 }
 
 const uriLinkSegments = {
@@ -44,6 +45,14 @@ CameraButtons.forEach(button => {
     }
 )});
 
+document.getElementById("ApplyChanges").onclick = async () => {
+    const userInputSol = document.getElementById("SolNum");
+
+    if ((userInputSol != 0) || (userInputSol < tempInfo.maxSol)) {
+        uriLinkSegments.solNum = userInputSol;
+    }
+}
+
 async function getMaxSol() {
     const apiKey = uriLinkSegments.apiKey;
     const chosenRover = uriLinkSegments.rover;
@@ -52,9 +61,23 @@ async function getMaxSol() {
         const roverDataResponse = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${chosenRover}?api_key=${apiKey}`);
         console.log(roverDataResponse);
 
-        const solData = roverDataResponse.data.rover.max_sol;
-        console.log(solData);
+        tempInfo.maxSol = roverDataResponse.data.rover.max_sol;
     } catch (error) {
         console.log(error);
+    }
+}
+
+async function getRoverImages() {
+    const chosenRover = uriLinkSegments.rover;
+    const chosenCamera = uriLinkSegments.cameraAngle;
+    const apiKey = uriLinkSegments.apiKey;
+    const solNum = uriLinkSegments.solNum;
+
+    try {
+        const roverPhotoResponse = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${chosenRover}/photos?api_key=${apiKey}&camera=${chosenCamera}&sol=${solNum}`);
+
+        roverPhotoResponse
+    } catch (error) {
+        console.log(error)
     }
 }
