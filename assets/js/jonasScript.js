@@ -2,7 +2,7 @@
 let photoArray = [];
 
 let maxSol = 0;
-let indexValue = 0;
+let indexValue = 1;
 
 const uriLinkSegments = {
     solNum: 0,
@@ -28,10 +28,24 @@ CameraButtons.forEach(button => {
 });
 
 CarouselButtons.forEach(button => {
-    button.addEventListener("click", (event)  => {
-        const response = event;
+    button.addEventListener("click", (event) => {
+        if (validateStepValue() == "error") {
+            return;
+        }
 
-        
+        const responseButtonName = event.target.innerHTML;
+
+        if (responseButtonName == "Next") {
+            nextIndex();
+            displayImage(indexValue);
+        }
+        else {
+            prevIndex();
+            displayImage(indexValue);
+        }
+
+
+
     });
 });
 
@@ -59,7 +73,8 @@ document.getElementById("ApplyChanges").onclick = async () => {
 
     const photoExistence = checkForPhotos();
     if (photoExistence == true) {
-        displayImage(indexValue);
+        console.log("test")
+        displayImage(indexValue - 1);
     }
     else {
         return;
@@ -139,6 +154,36 @@ function clearPhotoAndText() {
     }
 }
 
-function nextIndex() {
+function validateStepValue() {
+    const stepInput = Number(document.getElementById("CarouselStep").value);
 
+    console.log("Hi " +stepInput);
+
+    if ((stepInput >= 0) && (!isNaN(stepInput))) {
+        return "success";
+    }
+    else {
+        document.getElementById("StepErrorText").textContent = "Step value invalid. Please change step value.";
+        return "error";
+    }
+}
+
+function nextIndex(stepValue) {
+    if (stepValue + photoArray[indexValue] != photoArray.length) {
+        indexValue += stepValue;
+    }
+    else {
+        document.getElementById("StepErrorText").textContent = "Unable to complete action since doing so would go beyond the photo selection.\n Please change step value or go backwards.";
+        return;
+    }
+}
+
+function prevIndex(stepValue) {
+    if (photoArray[indexValue] - stepValue != photoArray.length) {
+        indexValue -= stepValue;
+    }
+    else {
+        document.getElementById("StepErrorText").textContent = "Unable to complete action since doing so would go beyond the photo selection.\n Please change step value or go forwards.";
+        return;
+    }
 }
