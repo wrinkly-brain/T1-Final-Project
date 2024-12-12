@@ -1,4 +1,6 @@
 // Store button info to use in functions
+let photoArray = [];
+
 const tempInfo = {
     buttonID: "",
     buttonClass: "",
@@ -48,9 +50,16 @@ CameraButtons.forEach(button => {
 document.getElementById("ApplyChanges").onclick = async () => {
     const userInputSol = document.getElementById("SolNum");
 
-    if ((userInputSol != 0) || (userInputSol < tempInfo.maxSol)) {
+    // maxSol is subtracted by 1 to make sure there are uploaded photos
+    if ((userInputSol >= 0) || (userInputSol < (tempInfo.maxSol - 1))) {
         uriLinkSegments.solNum = userInputSol;
     }
+    else {
+        uriLinkSegments.solNum = 0;
+    }
+
+    await getRoverImages();
+    displayImage(1);
 }
 
 async function getMaxSol() {
@@ -73,11 +82,23 @@ async function getRoverImages() {
     const apiKey = uriLinkSegments.apiKey;
     const solNum = uriLinkSegments.solNum;
 
+
+    // Curiosity MARDI cam can only have a solNum of 0 since those pictures are of the landing descent
     try {
         const roverPhotoResponse = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${chosenRover}/photos?api_key=${apiKey}&camera=${chosenCamera}&sol=${solNum}`);
 
-        roverPhotoResponse
+        roverPhotoResponse.photos.forEach(photo => {
+            photoArray.push(photo.img_src);
+        })
+
+        return photoArray;
     } catch (error) {
         console.log(error)
+        return;
     }
+}
+
+function displayImage(index) {
+    document.getElementById("RoverImage").setAttribute("src", `${photoArray[index]}`);
+    document.getElementById("RoverImage").setAttribute("alt", `An image from the ${uriLinkSegments.rover.charAt(0).toUpperCase()} rover.`);
 }
