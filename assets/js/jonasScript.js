@@ -4,6 +4,10 @@ const latestButtonInfo = {
     buttonClass: "",
 }
 
+const uriLinkSegments = {
+    
+}
+
 const RoverButtons = document.querySelectorAll(".RoverButtons");
 const CameraButtons = document.querySelectorAll(".CameraButtons");
 
@@ -32,3 +36,4 @@ CameraButtons.forEach(button => {
         console.log(latestButtonInfo);
     }
 )});
+
