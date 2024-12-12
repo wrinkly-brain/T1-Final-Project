@@ -2,6 +2,7 @@
 let photoArray = [];
 
 let maxSol = 0;
+let indexValue = 0;
 
 const uriLinkSegments = {
     solNum: 0,
@@ -9,8 +10,8 @@ const uriLinkSegments = {
     apiKey: "qUb2gjOCMIuMLu4Cd49cA9FhDHdYPyRuGpaOYTn2"
 }
 
-const RoverButtons = document.querySelectorAll(".RoverButtons");
 const CameraButtons = document.querySelectorAll(".CameraButtons");
+const CarouselButtons = document.querySelectorAll(".CarouselButtons");
 
 // Since Curiosity is still operational, it is necessary to check for the max sol value that can be entered. This allows the user to have updated information
 window.onload = getMaxSol();
@@ -23,10 +24,16 @@ CameraButtons.forEach(button => {
         uriLinkSegments.cameraAngle = response.target.id;
 
         console.log(uriLinkSegments);
-    }
-    )
+    });
 });
 
+CarouselButtons.forEach(button => {
+    button.addEventListener("click", (event)  => {
+        const response = event;
+
+        
+    });
+});
 
 // Invokes several functions to ultimately display the images associated with the settings changes
 document.getElementById("ApplyChanges").onclick = async () => {
@@ -52,7 +59,7 @@ document.getElementById("ApplyChanges").onclick = async () => {
 
     const photoExistence = checkForPhotos();
     if (photoExistence == true) {
-        displayImage(0);
+        displayImage(indexValue);
     }
     else {
         return;
@@ -130,4 +137,8 @@ function clearPhotoAndText() {
     if (document.getElementById("ImageErrorText").innerHTML) {
         document.getElementById("ImageErrorText").textContent = "";
     }
+}
+
+function nextIndex() {
+
 }
