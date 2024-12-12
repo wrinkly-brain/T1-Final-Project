@@ -12,55 +12,60 @@
     </head>
     <body>
 
-        <div class="navBar">
-            <header>
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="nailah.html">APOD</a></li>
-                        <li><a href="austin.html">Exoplanets</a></li>
-                        <li><a href="jonas.html">Mars <br> Rovers</a></li>
-                    </ul>
-                </nav>
-            </header>
-        </div>
+        <div class="container">
 
-        <div>
-            <h1>Astronomy Picture of the Day</h1>
+            <div class="navBar">
+                <header>
+                    <nav>
+                        <ul>
+                            <li><button class="navButton"><a href="index.html">Home</a></button></li>
+                            <li><button class="navButton"><a href="nailah.html">APOD</a></button></li>
+                            <li><button class="navButton"><a href="austin.html">Exoplanets</a></button></li>
+                            <li><button class="navButton"><a href="jonas.html">Mars <br> Rovers</a></button></li>
+                        </ul>
+                    </nav>
+                </header>
+            </div>
 
-            <div class="info">
-                <div class="leftInfo">
-                    <h2>"Title of Image"</h2>
-                    <h5>"Date of Image"</h5>
-                    <p>"Description of image"</p>
+            <div class="allInfo">
+                <h1>Astronomy Picture of the Day</h1>
+
+                <div class="info">
+
+                    <div class="leftInfo">
+                        <h2>"Title of Image"</h2>
+                        <h5>"Date of Image"</h5>
+                        <p>"Description of image"</p>
+                    </div>
+                
+
+                    <div class="rightInfo">
+                        <img src="https://apod.nasa.gov/apod/image/2412/CenAShellsJets_Olsen_1080.jpg" alt="The Shells and Jets of Galaxy Centaurus">
+                    </div>
+
+                    <div class="randomButton">
+                        <button class="randButton">Click here for a random APOD!</button>
+                    </div>
+
+                    <div class="surveyForm">
+                        <p>What did you think of the APOD website?</p>
+                        <form>
+                            <input type="radio" id="good" name="feedback" value="GOOD">
+                            <label for="good">I liked it! Very interesting!</label><br>
+
+                            <input type="radio" id="meh" name="feedback" value="MEH">
+                            <label for="meh">Not my favorite.</label><br>
+
+                            <input type="radio" id="bad" name="feedback" value="BAD">
+                            <label for="bad">This is lame...</label><br>
+
+                            <input type="submit" value="Submit">
+                        </form>
+                    </div>
                 </div>
-
-                <div class="rightInfo">
-                    <img src="https://apod.nasa.gov/apod/image/2412/CenAShellsJets_Olsen_1080.jpg" alt="The Shells and Jets of Galaxy Centaurus">
-                </div>
-
-                <div class="randomButton">
-                    <button>Click here for a random APOD!</button>
-                </div>
-
-                <div class="surveyForm">
-                    <p>What did you think of the APOD website?</p>
-                    <form>
-                        <input type="radio" id="good" name="feedback" value="GOOD">
-                        <label for="good">I liked it! Very interesting!</label><br>
-
-                        <input type="radio" id="meh" name="feedback" value="MEH">
-                        <label for="meh">Not my favorite.</label><br>
-
-                        <input type="radio" id="bad" name="feedback" value="BAD">
-                        <label for="bad">This is lame...</label><br>
-
-                        <input type="submit" value="Submit">
-                    </form>
-                </div>
-
             </div>
 
         </div>
+
     </body>
 </html>

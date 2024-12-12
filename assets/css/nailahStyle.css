@@ -35,7 +35,7 @@ h1 {
     border-color: #061F4A;
 }
 
-button {
+.randButton {
     background-color: #02BFE7;
     color:#FFFF;
     border-radius: 10px;
@@ -47,7 +47,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.randButton:hover {
     background-color: #DD361C;
 }
 
