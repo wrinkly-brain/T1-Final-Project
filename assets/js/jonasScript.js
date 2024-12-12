@@ -1,15 +1,10 @@
 // Store button info to use in functions
 let photoArray = [];
 
-const tempInfo = {
-    buttonID: "",
-    buttonClass: "",
-    maxSol: 0
-}
+let maxSol = 0;
 
 const uriLinkSegments = {
     solNum: 0,
-    rover: "",
     cameraAngle: "",
     apiKey: "qUb2gjOCMIuMLu4Cd49cA9FhDHdYPyRuGpaOYTn2"
 }
@@ -17,30 +12,13 @@ const uriLinkSegments = {
 const RoverButtons = document.querySelectorAll(".RoverButtons");
 const CameraButtons = document.querySelectorAll(".CameraButtons");
 
-// Listen for a click of a rover button to store that button's information in the tempInfo object
-RoverButtons.forEach(button => {
-    button.addEventListener("click", async (event) => {
-        const response = event;
+// Since Curiosity is still operational, it is necessary to check for the max sol value that can be entered. This allows the user to have updated information
+window.onload = getMaxSol();
 
-        // Take the id of the button and the class and store it in the tempInfo object
-        tempInfo.buttonID = response.target.id;
-        tempInfo.buttonClass = response.target.className;
-
-        uriLinkSegments.rover = response.target.id.toLowerCase();
-
-        await getMaxSol();
-    }
-    )
-});
-
-// Same function as the RoverButton listener, but it's for the camera buttons
+// Listen for a click of a camera button to store that button's information in the uriLinkSegments object
 CameraButtons.forEach(button => {
     button.addEventListener("click", (event) => {
         const response = event;
-
-        // Take the id of the button and the class and store it in the tempInfo object
-        tempInfo.buttonID = response.target.id;
-        tempInfo.buttonClass = response.target.className;
 
         uriLinkSegments.cameraAngle = response.target.id;
 
@@ -49,17 +27,17 @@ CameraButtons.forEach(button => {
     )
 });
 
+
+// Invokes several functions to ultimately display the images associated with the settings changes
 document.getElementById("ApplyChanges").onclick = async () => {
     const userInputSol = document.getElementById("SolNum").value;
 
-    console.log(tempInfo.maxSol);
-
     console.log(Number(userInputSol));
 
-    console.log((Number(userInputSol) >= 0) && (Number(userInputSol) < (tempInfo.maxSol - 1)));
+    console.log((Number(userInputSol) >= 0) && (Number(userInputSol) < (maxSol - 1)));
 
     // maxSol is subtracted by 1 to make sure there are uploaded photos
-    if ((userInputSol >= 0) && (userInputSol < (tempInfo.maxSol - 1))) {
+    if ((userInputSol >= 0) && (userInputSol < (maxSol - 1))) {
         uriLinkSegments.solNum = Number(userInputSol);
         console.log("uri link seg: " + uriLinkSegments.solNum);
     }
@@ -81,32 +59,32 @@ document.getElementById("ApplyChanges").onclick = async () => {
     }
 }
 
+// Uses api key to fetch max sol data from the api
 async function getMaxSol() {
     const apiKey = uriLinkSegments.apiKey;
-    const chosenRover = uriLinkSegments.rover;
 
     try {
-        const roverDataResponse = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${chosenRover}?api_key=${apiKey}`);
+        const roverDataResponse = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity?api_key=${apiKey}`);
         console.log(roverDataResponse);
 
-        tempInfo.maxSol = roverDataResponse.data.rover.max_sol;
+        maxSol = roverDataResponse.data.rover.max_sol;
     } catch (error) {
         console.log(error);
     }
 }
 
+// Uses properties in uriLinkSegments to construct a uri link. Then, using the constructed uri, photoArray is filled with the response from the api
 async function getRoverImages() {
-    const chosenRover = uriLinkSegments.rover;
     const chosenCamera = uriLinkSegments.cameraAngle;
     const apiKey = uriLinkSegments.apiKey;
     const solNum = uriLinkSegments.solNum;
 
 
-    // Curiosity MARDI cam can only have a solNum of 0 since those pictures are of the landing descent
+    // MARDI cam can only have a solNum of 0 since those pictures are of the landing descent
     try {
-        const roverPhotoResponse = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${chosenRover}/photos?api_key=${apiKey}&camera=${chosenCamera}&sol=${solNum}`);
+        const roverPhotoResponse = await axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=${apiKey}&camera=${chosenCamera}&sol=${solNum}`);
 
-        console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/${chosenRover}/photos?api_key=${apiKey}&camera=${chosenCamera}&sol=${solNum}`);
+        console.log(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=${apiKey}&camera=${chosenCamera}&sol=${solNum}`);
         console.log(roverPhotoResponse);
 
         roverPhotoResponse.data.photos.forEach(photo => {
@@ -121,20 +99,19 @@ async function getRoverImages() {
     }
 }
 
+// Takes an image at a certain index in the and change the img's src attribute
 function displayImage(index) {
     document.getElementById("RoverImage").setAttribute("src", `${photoArray[index]}`);
-
-    const roverName = uriLinkSegments.rover;
-    const capitalizedRoverName = roverName.charAt(0).toUpperCase() + roverName.slice(1);
-    document.getElementById("RoverImage").setAttribute("alt", `An image from the ${capitalizedRoverName} rover.`);
 }
 
+// Check if the photo array has any items. If so, it clears the array to prepare for a new set of images
 function clearPhotoArray() {
     if (photoArray.length > 0) {
         photoArray = [];
     }
 }
 
+// Checks for an image in the array. If the array is empty, it displays error text.
 function checkForPhotos() {
     if (photoArray.length == 0) {
         document.getElementById("ImageErrorText").textContent = "No images can be found using those settings. \n Try changing the camera view or solar day value.";
@@ -145,6 +122,8 @@ function checkForPhotos() {
     }
 }
 
+
+// Clears the photo to prepare for another photo. Removes error text if there is error text on screen
 function clearPhotoAndText() {
     document.getElementById("RoverImage").setAttribute("src", "");
 
