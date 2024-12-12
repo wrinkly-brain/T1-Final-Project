@@ -74,7 +74,7 @@ document.getElementById("ApplyChanges").onclick = async () => {
 
     const photoExistence = checkForPhotos();
     if (photoExistence == true) {
-        displayImage(1);
+        displayImage(0);
     }
     else {
         return;
@@ -146,6 +146,9 @@ function checkForPhotos() {
 }
 
 function clearPhotoAndText() {
-    document.getElementById("RoverImage").setAttribute("src","");
-    document.getElementById("ImageErrorText").textContent = "";
+    document.getElementById("RoverImage").setAttribute("src", "");
+
+    if (document.getElementById("ImageErrorText").innerHTML) {
+        document.getElementById("ImageErrorText").textContent = "";
+    }
 }
