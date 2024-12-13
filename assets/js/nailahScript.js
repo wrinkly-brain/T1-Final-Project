@@ -15,7 +15,7 @@ function randButton(){
 function fetchNasa(){
 
     $.ajax({
-        url: "https://api.nasa.gov/planetary/apod?api_key=xAP1HKs1wN8evwCa3vQjye47l8WBGVtcM5UFtTT8",
+        url: "https://api.nasa.gov/planetary/apod?api_key=xAP1HKs1wN8evwCa3vQjye47l8WBGVtcM5UFtTT8&count=1",
         type: "GET",
         dataType: "json",
         success: function(data) {
