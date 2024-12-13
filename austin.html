@@ -3,38 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exoplanets</title>
+    <title>Near Earth Objects</title>
     <link rel="stylesheet" href="assets/css/austinStyle.css">
 </head>
 <body>
+    
     <div class="navigation">
         <a href="index.html">
             <button class="nav-button">Home</button>
-          </a>
+        </a>
         <a href="nailah.html">
             <button class="nav-button">APOD</button>
         </a>
         <a href="austin.html">
-            <button class="nav-active-button">Exoplanets</button>
+            <button class="nav-active-button">NEO's</button>
         </a>
         <a href="jonas.html">
             <button class="nav-button">Mars Rover</button>
         </a>
     </div>
     <div class="container">
-        <h1>Exoplanets</h1>
+        <h1>Near Earth Objects</h1>
         <div class="main-content">
             <div class="image-section">
-                <div class="image-placeholder">Image of Exoplanet</div>
+                <div class="image-placeholder">Image</div>
             </div>
             <div class="info-section">
-                <div class="info-item">name of exoplanet</div>
-                <div class="info-item">Location</div>
-                <div class="info-item description">brief description</div>
-                <button class="load-button">load a new planet</button>
+                <div class="info-item name">Name</div>
+                <div class="info-item location">Location</div>
+                <div class="info-item description"></div>
+                <button class="load-button">Load a new NEO</button>
+            </div>
+            <div class="newsletter-section">
+                <h4>Subscribe to our newsletter for the latest NEO discoveries!</h4>
+                <form class="newsletter-form">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <button type="submit" class="subscribe-button">Subscribe</button>
+                </form>
             </div>
         </div>
-        
     </div>
+    <script src="assets/js/austinScript.js"></script>
 </body>
 </html>
+
