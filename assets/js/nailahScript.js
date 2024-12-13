@@ -3,6 +3,14 @@ $(document).ready(function (){
     fetchNasa()
 });
 
+$(document).ready(function(){
+    randButton()
+});
+
+function randButton(){
+    
+}
+
 function fetchNasa(){
 
     $.ajax({
