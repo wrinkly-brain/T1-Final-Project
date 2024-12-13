@@ -188,3 +188,11 @@ function prevIndex(stepValue) {
         return;
     }
 }
+
+function disableCarouselButtons() {
+    const NextButton = document.getElementById("NextButton");
+    const PrevButton = document.getElementById("PrevButton");
+
+    PrevButton.setAttribute("disabled", "");
+    NextButton.setAttribute("disabled", "");
+}
