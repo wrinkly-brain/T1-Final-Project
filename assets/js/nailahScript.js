@@ -50,12 +50,10 @@ function fetchNasa(){
            let media_type = data.media_type;
            let title = data.title;
            let url = data.url;
-           console.log(copyRight)
-           console.log(date)
-           console.log(explanation)
-           console.log(media_type)
-           console.log(title)
-           console.log(url)
+           $('#title').text(title)
+           $("#date").text(date)
+           $("#explanation").text(explanation)
+           $("#pic").attr("src", url)
         }
 
     })
