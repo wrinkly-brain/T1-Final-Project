@@ -197,14 +197,14 @@ function disableCarouselButtons() {
     NextButton.setAttribute("disabled", "");
 }
 
-async function getCertainStuffFromAPI() {
-    try {
-        const response = await axios.get("https://api.nasa.gov/planetary/apod?api_key=qUb2gjOCMIuMLu4Cd49cA9FhDHdYPyRuGpaOYTn2&date=2009-12-24");
+function enableCarouselButtons() {
+    const NextButton = document.getElementById("NextButton");
+    const PrevButton = document.getElementById("PrevButton");
 
-        console.log(response);
-
-        console.log(response.copywrite);
-    } catch (error) {
-        console.log(error);
+    if (NextButton.hasAttribute("disabled")) {
+        NextButton.removeAttribute("disabled");
+    }
+    if (PrevButton.hasAttribute("disabled")) {
+        PrevButton.removeAttribute("disabled");
     }
 }
