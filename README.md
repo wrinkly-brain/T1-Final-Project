@@ -1,4 +1,8 @@
 # T1-Final-Project
+Live Site: 
+https://wrinkly-brain.github.io/T1-Final-Project/
+
+
 The homepage displays small descriptions of each of the other three pages on the website. This page’s function is just to welcome the user and give them a small description of each page. There are no forms or API functions on this page.
 
 The Astronomy Picture of the Day (APOD) page (Nailah’s page) displays the information of a random APOD along with the picture itself. The user can click a button to generate another random APOD. The page makes an initial API call to fetch the current APOD. Then, if the user clicks on the button that generates a random APOD, the page makes another API call to fetch a random APOD using the “count” query parameter. 
