@@ -10,3 +10,5 @@ The Astronomy Picture of the Day (APOD) page (Nailah’s page) displays the info
 The Near-Earth Objects (NEOs) page (Austin’s page) displays the information of a random NEO. The user can click a button to receive the information of another random NEO. Upon loading into the page, the website fetches all of the NEO data from the NASA API, then displays a random NEO.
 
 The Curiosity Rover page (Jonas’s page) allows the user to generate and look through an album of images based on the solar day the user wants and the camera angle the user wants. Upon loading into the page, an API fetch request is made to check a value. That value is used to check user input. API fetch requests (which change based on user input) are made when the user clicks the apply changes button.
+
+The only animations that are used are color changes for buttons.
