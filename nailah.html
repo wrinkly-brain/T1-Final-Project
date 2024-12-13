@@ -1,73 +1,77 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>APOD</title>
-        <link rel="navbarstyle" href="./assets/css/navbarStyle.css">
-        <link rel="stylesheet" href="./assets/css/nailahStyle.css">
-        
 
-    </head>
-    <body>
-            <div class="navigation">
-                <a href="index.html">
-                    <button class="nav-button">Home</button>
-                  </a>
-                <a href="nailah.html">
-                    <button class="nav-active-button">APOD</button>
-                </a>
-                <a href="austin.html">
-                    <button class="nav-button">Exoplanets</button>
-                </a>
-                <a href="jonas.html">
-                    <button class="nav-button">Mars Rover</button>
-                </a>
-            </div>
-        <div class="container">
-            <div class="allInfo">
-                <h1>Astronomy Picture of the Day</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APOD</title>
+    <link rel="navbarstyle" href="assets/css/navbarStyle.css">
+    <link rel="stylesheet" href="assets/css/nailahStyle.css">
 
-                <div class="info">
 
-                    <div class="leftInfo">
-                        <h2>Title of Image</h2>
-                        <h5>Date:</h5>
-                        <p>Description: </p>
-                    </div>
-                
+</head>
 
-                    <div class="rightInfo">
-                        <img src="https://apod.nasa.gov/apod/image/2412/MSato_Phaethon-and-Geminids-v1.jpg" alt="NASA Picture of the Day" width="100%">
-                    </div>
+<body>
+    <div class="navigation">
+        <a href="index.html">
+            <button class="nav-button">Home</button>
+        </a>
+        <a href="nailah.html">
+            <button class="nav-active-button">APOD</button>
+        </a>
+        <a href="austin.html">
+            <button class="nav-button">Exoplanets</button>
+        </a>
+        <a href="jonas.html">
+            <button class="nav-button">Mars Rover</button>
+        </a>
+    </div>
+    <div class="container">
+        <div class="allInfo">
+            <h1>Astronomy Picture of the Day</h1>
 
-                    <div class="randomButton">
-                        <button class="randButton">Click here for a random APOD!</button>
-                    </div>
+            <div class="info">
+
+                <div class="leftInfo">
+                    <h2>Title of Image</h2>
+                    <h5>Date:</h5>
+                    <p>Description: </p>
                 </div>
-                <div>
-                    <div class="surveyForm">
-                        <p>What did you think of the APOD website?</p>
-                        <form>
-                            <input type="radio" id="good" name="feedback" value="GOOD">
-                            <label for="good">I liked it! Very interesting!</label><br>
 
-                            <input type="radio" id="meh" name="feedback" value="MEH">
-                            <label for="meh">Not my favorite.</label><br>
 
-                            <input type="radio" id="bad" name="feedback" value="BAD">
-                            <label for="bad">This is lame...</label><br>
+                <div class="rightInfo">
+                    <img src="https://apod.nasa.gov/apod/image/2412/MSato_Phaethon-and-Geminids-v1.jpg"
+                        alt="NASA Picture of the Day" width="100%">
+                </div>
 
-                            <input type="submit" value="Submit">
-                        </form>
-                    </div>
+                <div class="randomButton">
+                    <button class="randButton">Click here for a random APOD!</button>
                 </div>
             </div>
+            <div>
+                <div class="surveyForm">
+                    <p>What did you think of the APOD website?</p>
+                    <form>
+                        <input type="radio" id="good" name="feedback" value="GOOD">
+                        <label for="good">I liked it! Very interesting!</label><br>
 
+                        <input type="radio" id="meh" name="feedback" value="MEH">
+                        <label for="meh">Not my favorite.</label><br>
+
+                        <input type="radio" id="bad" name="feedback" value="BAD">
+                        <label for="bad">This is lame...</label><br>
+
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
         </div>
 
-    </body>
-</html>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+        integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/js/nailahScript.js"></script>
+</body>
 
-<script type="text/javascript" src="./assets/js/nailahScript.js"></script>
+</html>

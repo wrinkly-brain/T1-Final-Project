@@ -32,13 +32,31 @@
 //     console.error('Error:', error);
 //   });
 
-axios
-    .get(
-        "https://api.nasa.gov/planetary/apod?api_key=xAP1HKs1wN8evwCa3vQjye47l8WBGVtcM5UFtTT8&date=2024-12-12"
-    )
-    .then(function (response) {
-        console.log(date);
+ 
+$(document).ready(function (){
+    fetchNasa()
+});
+
+function fetchNasa(){
+
+    $.ajax({
+        url: "https://api.nasa.gov/planetary/apod?api_key=xAP1HKs1wN8evwCa3vQjye47l8WBGVtcM5UFtTT8",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+           let copyRight =  data.copyright;
+           let date = data.date;
+           let explanation = data.explanation;
+           let media_type = data.media_type;
+           let title = data.title;
+           let url = data.url;
+           console.log(copyRight)
+           console.log(date)
+           console.log(explanation)
+           console.log(media_type)
+           console.log(title)
+           console.log(url)
+        }
+
     })
-    .catch(function (error) {
-        console.log(error);
-    });
+}
