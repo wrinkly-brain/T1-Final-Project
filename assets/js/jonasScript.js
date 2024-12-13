@@ -2,7 +2,7 @@
 let photoArray = [];
 
 let maxSol = 0;
-let indexValue = 1;
+let indexValue = 0;
 
 const uriLinkSegments = {
     solNum: 0,
@@ -15,6 +15,7 @@ const CarouselButtons = document.querySelectorAll(".CarouselButtons");
 
 // Since Curiosity is still operational, it is necessary to check for the max sol value that can be entered. This allows the user to have updated information
 window.onload = getMaxSol();
+window.onload = disableCarouselButtons();
 
 // Listen for a click of a camera button to store that button's information in the uriLinkSegments object
 CameraButtons.forEach(button => {
@@ -44,6 +45,8 @@ CarouselButtons.forEach(button => {
         else {
             prevIndex(stepValue);
         }
+
+        displayImageAmountAndIndex();
         displayImage(indexValue);
     });
 });
@@ -52,14 +55,12 @@ CarouselButtons.forEach(button => {
 document.getElementById("ApplyChanges").onclick = async () => {
     const userInputSol = document.getElementById("SolNum").value;
 
-    console.log(Number(userInputSol));
-
-    console.log((Number(userInputSol) >= 0) && (Number(userInputSol) < (maxSol - 1)));
+    // Reset index value
+    indexValue = 0;
 
     // maxSol is subtracted by 1 to make sure there are uploaded photos
     if ((userInputSol >= 0) && (userInputSol < (maxSol - 1))) {
         uriLinkSegments.solNum = Number(userInputSol);
-        console.log("uri link seg: " + uriLinkSegments.solNum);
     }
     else {
         uriLinkSegments.solNum = 0;
@@ -73,9 +74,14 @@ document.getElementById("ApplyChanges").onclick = async () => {
     const photoExistence = checkForPhotos();
     if (photoExistence == true) {
         console.log("test")
-        displayImage(indexValue - 1);
+        // Allow the user to change the picture
+        enableCarouselButtons();
+
+        displayImageAmountAndIndex();
+        displayImage(indexValue);
     }
     else {
+        disableCarouselButtons();
         return;
     }
 }
@@ -170,6 +176,7 @@ function nextIndex(stepValue) {
 
     if (newIndex < photoArray.length) {
         indexValue = newIndex;
+        document.getElementById("StepErrorText").textContent = "";
     }
     else {
         document.getElementById("StepErrorText").textContent = "Unable to complete action since doing so would go beyond the photo selection.\n Please change step value or go backwards.";
@@ -182,6 +189,7 @@ function prevIndex(stepValue) {
 
     if (newIndex >= 0) {
         indexValue = newIndex;
+        document.getElementById("StepErrorText").textContent = "";
     }
     else {
         document.getElementById("StepErrorText").textContent = "Unable to complete action since doing so would go beyond the photo selection.\n Please change step value or go forwards.";
@@ -207,4 +215,11 @@ function enableCarouselButtons() {
     if (PrevButton.hasAttribute("disabled")) {
         PrevButton.removeAttribute("disabled");
     }
+}
+
+function displayImageAmountAndIndex() {
+    // I can't think of a good variable name for this
+    const gallerySizeAndIndexText = `${indexValue + 1}/${photoArray.length}`
+
+    document.getElementById("gallerySizeAndIndex").textContent = gallerySizeAndIndexText;
 }
