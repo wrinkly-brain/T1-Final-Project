@@ -43,9 +43,6 @@ CarouselButtons.forEach(button => {
             prevIndex();
             displayImage(indexValue);
         }
-
-
-
     });
 });
 
