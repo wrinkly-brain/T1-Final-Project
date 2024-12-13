@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script type="text/javascript" src="assets/js/jonasScript.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="assets/css/jonasStyle.css">
 
     <title>Curiosity Rover Camera Station</title>
@@ -17,7 +15,7 @@
         <div class="navigation">
             <a href="index.html">
                 <button class="nav-button">Home</button>
-              </a>
+            </a>
             <a href="nailah.html">
                 <button class="nav-button">APOD</button>
             </a>
@@ -31,44 +29,67 @@
         <h1>Curiosity Rover Camera Station</h1>
     </header>
     <main>
-        <section id="RoverCam">
-            <p id="gallerySizeAndIndex"></p>
-            <img id="RoverImage" src="" alt="An image from the Curiosity rover."> <br>
-            <p id="ImageErrorText"></p> <br>
-
-            <button id="PrevButton" class="CarouselButtons">Previous</button>
-            <button id="NextButton" class="CarouselButtons">Next</button> <br>
-            <label for="CarouselStep">Step Size:</label>
-            <input type="text" id="CarouselStep" placeholder="Enter step size"> <br>
-            <p id="StepErrorText"></p>
-        </section>
-
         <aside>
             <section>
-                <label for="SolNum">Enter a number for the solar day:</label>
-                <input type="text" id="SolNum">
-                <!-- When the user hovers over this input area, an explanation of a solar day will appear -->
+                <div>
+                    <label for="SolNum">Enter a number for the solar day:</label>
+                    <input type="text" id="SolNum" value="0">
+                    <!-- When the user hovers over this input area, an explanation of a solar day will appear -->
+                </div>
             </section>
 
             <section id="CameraChoices">
-                <h3>Camera Selection</h3> <br>
-                <button id="FHAZ" class="CameraButtons">Front Hazard Cam</button>
-                <button id="RHAZ" class="CameraButtons">Rear Hazard Cam</button> <br>
-                <button id="MAST" class="CameraButtons">Mast Cam</button>
-                <button id="CHEMCAM" class="CameraButtons">Chemistry and Camera Complex</button> <br>
-                <!-- Will probably change the CHEMCAM button text -->
+                <div>
+                    <h3>Camera Selection</h3> <br>
+                    <button id="FHAZ" class="CameraButtons">Front Hazard Cam</button>
+                    <button id="RHAZ" class="CameraButtons">Rear Hazard Cam</button> <br>
+                    <button id="MAST" class="CameraButtons">Mast Cam</button>
+                    <button id="NAVCAM" class="CameraButtons">Navigation Cam</button> <br>
+                    <!-- Will probably change the CHEMCAM button text -->
 
-                <button id="MAHLI" class="CameraButtons">Hand Lens Imager</button>
-                <button id="MARDI" class="CameraButtons">Mars Descent Imager</button> <br>
-                <button id="NAVCAM" class="CameraButtons">Navigation Cam</button>
-                <!-- When the user hovers over this button, it'll display the unabbreviated name -->
+                    <button id="MAHLI" class="CameraButtons">Hand Lens Imager</button>
+                    <button id="MARDI" class="CameraButtons">Mars Descent Imager</button> <br>
+                    <button id="CHEMCAM" class="CameraButtons">Chemistry and <br> Camera Complex</button>
+                    <!-- When the user hovers over this button, it'll display the unabbreviated name -->
+                </div>
             </section>
 
             <section>
                 <button id="ApplyChanges">Apply Changes</button>
             </section>
         </aside>
+
+        <section id="RoverCam">
+            <div>
+                <img id="RoverImage" src="" alt="An image from the Curiosity rover."> <br>
+                <p id="gallerySizeAndIndex"></p> <br>
+
+                <p id="ImageErrorText" style="white-space: pre;"></p> <br>
+
+                <button id="PrevButton" class="CarouselButtons">Previous</button>
+                <button id="NextButton" class="CarouselButtons">Next</button> <br><br>
+
+                <label for="CarouselStep">Step Size:</label>
+                <input type="text" id="CarouselStep" placeholder="Enter step size" value="1"> <br>
+                <p id="StepErrorText" style="white-space: pre;"></p>
+            </div>
+        </section>
     </main>
+    <section id="form">
+        <h4>Review my page!</h4>
+        <form>
+            <input type="radio" id="positive" name="feedback" value="positive">
+            <label for="positive">Awesome page!</label> <br>
+
+            <input type="radio" id="negative" name="feedback" value="negative">
+            <label for="negative">This page is stinky.</label> <br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </section>
 </body>
 
 </html>
+
+<script type="text/javascript" src="assets/js/jonasScript.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
