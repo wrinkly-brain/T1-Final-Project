@@ -29,20 +29,22 @@ CameraButtons.forEach(button => {
 
 CarouselButtons.forEach(button => {
     button.addEventListener("click", (event) => {
-        if (validateStepValue() == "error") {
+        const stepValue = validateStepValue();
+
+        if (stepValue == "error") {
             return;
         }
 
         const responseButtonName = event.target.innerHTML;
 
         if (responseButtonName == "Next") {
-            nextIndex();
-            displayImage(indexValue);
+            console.log(indexValue);
+            nextIndex(stepValue);
         }
         else {
-            prevIndex();
-            displayImage(indexValue);
+            prevIndex(stepValue);
         }
+        displayImage(indexValue);
     });
 });
 
@@ -154,10 +156,8 @@ function clearPhotoAndText() {
 function validateStepValue() {
     const stepInput = Number(document.getElementById("CarouselStep").value);
 
-    console.log("Hi " +stepInput);
-
-    if ((stepInput >= 0) && (!isNaN(stepInput))) {
-        return "success";
+    if ((stepInput >= 1) && (!isNaN(stepInput))) {
+        return stepInput;
     }
     else {
         document.getElementById("StepErrorText").textContent = "Step value invalid. Please change step value.";
@@ -166,8 +166,10 @@ function validateStepValue() {
 }
 
 function nextIndex(stepValue) {
-    if (stepValue + photoArray[indexValue] != photoArray.length) {
-        indexValue += stepValue;
+    const newIndex = indexValue + stepValue;
+
+    if (newIndex < photoArray.length) {
+        indexValue = newIndex;
     }
     else {
         document.getElementById("StepErrorText").textContent = "Unable to complete action since doing so would go beyond the photo selection.\n Please change step value or go backwards.";
@@ -176,8 +178,10 @@ function nextIndex(stepValue) {
 }
 
 function prevIndex(stepValue) {
-    if (photoArray[indexValue] - stepValue != photoArray.length) {
-        indexValue -= stepValue;
+    const newIndex = indexValue - stepValue;
+
+    if (newIndex >= 0) {
+        indexValue = newIndex;
     }
     else {
         document.getElementById("StepErrorText").textContent = "Unable to complete action since doing so would go beyond the photo selection.\n Please change step value or go forwards.";
