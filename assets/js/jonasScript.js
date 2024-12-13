@@ -81,6 +81,7 @@ document.getElementById("ApplyChanges").onclick = async () => {
         displayImage(indexValue);
     }
     else {
+        displayImageAmountAndIndex();
         disableCarouselButtons();
         return;
     }
@@ -97,6 +98,7 @@ async function getMaxSol() {
         maxSol = roverDataResponse.data.rover.max_sol;
     } catch (error) {
         console.log(error);
+        alert("An error has occurred. Please reload the page.");
     }
 }
 
@@ -122,6 +124,7 @@ async function getRoverImages() {
         return photoArray;
     } catch (error) {
         console.log(error)
+        alert("Something went wrong when fetching images for that camera. Please try again.");
         return;
     }
 }
@@ -141,7 +144,7 @@ function clearPhotoArray() {
 // Checks for an image in the array. If the array is empty, it displays error text.
 function checkForPhotos() {
     if (photoArray.length == 0) {
-        document.getElementById("ImageErrorText").textContent = "No images can be found using those settings. \n Try changing the camera view or solar day value.";
+        document.getElementById("ImageErrorText").textContent = "No images can be found using those settings.\r\nTry changing the camera view or solar day value.";
         return false;
     }
     else {
@@ -179,7 +182,7 @@ function nextIndex(stepValue) {
         document.getElementById("StepErrorText").textContent = "";
     }
     else {
-        document.getElementById("StepErrorText").textContent = "Unable to complete action since doing so would go beyond the photo selection.\n Please change step value or go backwards.";
+        document.getElementById("StepErrorText").textContent = "Invalid action.\r\nPlease change step value or go backwards.";
         return;
     }
 }
@@ -192,7 +195,7 @@ function prevIndex(stepValue) {
         document.getElementById("StepErrorText").textContent = "";
     }
     else {
-        document.getElementById("StepErrorText").textContent = "Unable to complete action since doing so would go beyond the photo selection.\n Please change step value or go forwards.";
+        document.getElementById("StepErrorText").textContent = "Invalid action.\r\nPlease change step value or go forwards.";
         return;
     }
 }
