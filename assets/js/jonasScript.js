@@ -16,6 +16,7 @@ const CarouselButtons = document.querySelectorAll(".CarouselButtons");
 // Since Curiosity is still operational, it is necessary to check for the max sol value that can be entered. This allows the user to have updated information
 window.onload = getMaxSol();
 window.onload = disableCarouselButtons();
+window.onload = disableApplyChangesButton();
 
 // Listen for a click of a camera button to store that button's information in the uriLinkSegments object
 CameraButtons.forEach(button => {
@@ -24,7 +25,7 @@ CameraButtons.forEach(button => {
 
         uriLinkSegments.cameraAngle = response.target.id;
 
-        console.log(uriLinkSegments);
+        endableApplyChangesButton();
     });
 });
 
@@ -206,6 +207,20 @@ function disableCarouselButtons() {
 
     PrevButton.setAttribute("disabled", "");
     NextButton.setAttribute("disabled", "");
+}
+
+function disableApplyChangesButton() {
+    const ApplyChangesButton = document.getElementById("ApplyChanges");
+
+    ApplyChangesButton.setAttribute("disabled", "");
+}
+
+function endableApplyChangesButton() {
+    const ApplyChangesButton = document.getElementById("ApplyChanges");
+
+    if (ApplyChangesButton.hasAttribute("disabled")) {
+        ApplyChangesButton.removeAttribute("disabled");
+    }
 }
 
 function enableCarouselButtons() {
